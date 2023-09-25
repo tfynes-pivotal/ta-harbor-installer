@@ -142,7 +142,7 @@ logLevel: debug
 forcePassword: false
 #! @param harborAdminPassword The initial password of Harbor admin. Change it from portal after launching Harbor
 #! 
-harborAdminPassword: ""
+harborAdminPassword: #@ data.values.harborPassword
 #! If expose the service via Ingress, the NGINX server will not be used
 #! 
 #! The proxy settings for updating clair vulnerabilities from the Internet and replicating
