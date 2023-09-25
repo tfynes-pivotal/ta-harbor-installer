@@ -16,6 +16,11 @@ accelerator:
     inputType: text
     defaultValue: 'Harbor1234!'
 
+  - name: harborNamespace
+    label: Harbor install namespace
+    inputType: text
+    defaultValue: "harbor"
+
   # Question 3. Harbor Ingress Certificate
   - name: tlsCertificate
     label: Harbor TLS Certificate
@@ -55,8 +60,8 @@ engine:
       chain:
       - type: ReplaceText
         substitutions:
-        - text: akslab.tap.fynesy.com
-          with: "'x'"
+        - text: HARBOR_NAMESPACE
+          with: "#harborNamespace"
       - merge:
         - include: ["**"]
           exclude: ['harbor/values.yaml']
