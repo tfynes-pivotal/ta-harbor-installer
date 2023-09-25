@@ -285,7 +285,7 @@ persistence:
       storageClass: ""
       subPath: ""
       accessMode: ReadWriteOnce
-      size: #@ data.values.harborStorageCapacity
+      size: #@ data.values.harborStorageCapacity + 'Gi'
     #! @param persistence.persistentVolumeClaim.jobservice.existingClaim Use the existing PVC which must be created manually before bound, and specify the `subPath` if the PVC is shared with other components
     #! @param persistence.persistentVolumeClaim.jobservice.storageClass Specify the `storageClass` used to provision the volume. Or the default StorageClass will be used(the default). Set it to `-` to disable dynamic provisioning
     #! @param persistence.persistentVolumeClaim.jobservice.subPath The sub path used in the volume

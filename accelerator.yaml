@@ -37,10 +37,10 @@ accelerator:
 
   # Question 5. Harbor Disk Allocation
   - name: harborStorageCapacity
-    label: Harbor Storage Capacity
+    label: Harbor Storage Capacity (GB)
     inputType: text
     display: true
-    defaultValue: '50Gi'
+    defaultValue: '50'
 
 ####################################################################
 
