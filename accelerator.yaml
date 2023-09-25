@@ -6,7 +6,7 @@ accelerator:
 
   options:
   # Question 1. Harbor FQDN
-  - name: harborFqdn
+  - name: projectName
     label: Harbor Fully Qualified Hostname
     defaultValue: harbor.harborlab.fynesy.com
 
