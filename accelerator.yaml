@@ -68,4 +68,10 @@ engine:
         - include: ['harbor/values.yaml']
           chain:
           - type: YTT 
+      - merge:
+        - include: ["**"]
+          exclude: ['harborcerts.yaml']
+        - include: ['harborcerts.yaml']
+          chain:
+          - type: YTT
 
