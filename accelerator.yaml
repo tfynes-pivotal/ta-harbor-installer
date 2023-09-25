@@ -1,6 +1,6 @@
 accelerator:
-  displayName: Harbor Installer
-  description: Harbor Installer Setup Wizard
+  displayName: Harbor Installer Setup Wizard
+  description: Configures helm harbor package for deployment. Provide admin creds, TLS certs and registry capacity, generate accelerator, expand on workstation and run 'setup-harbor.sh'
   tags:
   - beta
 
