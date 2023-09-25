@@ -5,7 +5,7 @@ accelerator:
   - beta
 
   options:
-  # Question 1. Harbor FQDN
+  # Question 1. Harbor FQDN using reserved 'projectName' variable name for aesthetics
   - name: projectName
     label: Harbor Fully Qualified Hostname
     defaultValue: harbor.harborlab.fynesy.com
