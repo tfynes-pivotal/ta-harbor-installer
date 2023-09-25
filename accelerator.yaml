@@ -56,7 +56,7 @@ engine:
       - type: ReplaceText
         substitutions:
         - text: akslab.tap.fynesy.com
-          with: "#tapIngressDomain" 
+          with: "'x'"
       - merge:
         - include: ["**"]
           exclude: ['harbor/values.yaml']
