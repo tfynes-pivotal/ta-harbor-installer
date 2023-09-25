@@ -105,7 +105,7 @@ ipFamily:
 
 #! @param caBundleSecretName The custom ca bundle secret name, the secret must contain key named "ca.crt" which will be injected into the trust store for chartmuseum, clair, core, jobservice, registry, trivy components.
 #! 
-caBundleSecretName: ""
+caBundleSecretName: #@ data.values.harborSecretName
 #! @param externalURL The external URL for Harbor core service
 #! It is used to
 #! 1) populate the docker/helm commands showed on portal
@@ -181,14 +181,14 @@ service:
     enabled: true
     #! @param service.tls.existingSecret Existing secret name containing your own TLS certificates. The secret must contain the keys: `tls.crt` - the certificate (required), `tls.key` - the private key (required), `ca.crt` - the certificate of CA (optional). Self-signed TLS certificates will be used otherwise.
     #! 
-    existingSecret: ""
+    existingSecret: #@ data.values.harborSecretName
     #! @param service.tls.notaryExistingSecret By default, the Notary service will use the same cert and key as described above. Fill the name of secret if you want to use a separated one. Only needed when the `service.type` is `ingress`.
     #! 
     notaryExistingSecret: ""
     #! @param service.tls.commonName The common name used to generate the certificate, it's necessary when the `service.type` is `ClusterIP` or `NodePort` and `service.tls.existingSecret` is null
     #! Mandatory when "secretName" is not provided or type is not "Ingress".
     #! 
-    commonName: 'core.harbor.domain'
+    commonName: #@ data.values.projectName
   #! Service parameters when type is "clusterIP"
   #! 
   ports:
@@ -237,8 +237,8 @@ ingress:
   #! @param ingress.hosts [object] The list of hostnames to be covered with this ingress record
   #! 
   hosts:
-    core: core.harbor.domain
-    notary: notary.harbor.domain
+    core: #@ data.values.projectName
+    notary: #@ 'notary.' + data.values.projectName
   #! @param ingress.controller The ingress controller type. Currently supports `default`, `gce` and `ncp`
   #! leave as `default` for most ingress controllers.
   #! set to `gce` if using the GCE ingress controller
@@ -285,7 +285,7 @@ persistence:
       storageClass: ""
       subPath: ""
       accessMode: ReadWriteOnce
-      size: 5Gi
+      size: #@ data.values.harborStorageCapacity
     #! @param persistence.persistentVolumeClaim.jobservice.existingClaim Use the existing PVC which must be created manually before bound, and specify the `subPath` if the PVC is shared with other components
     #! @param persistence.persistentVolumeClaim.jobservice.storageClass Specify the `storageClass` used to provision the volume. Or the default StorageClass will be used(the default). Set it to `-` to disable dynamic provisioning
     #! @param persistence.persistentVolumeClaim.jobservice.subPath The sub path used in the volume
@@ -297,7 +297,7 @@ persistence:
       storageClass: ""
       subPath: ""
       accessMode: ReadWriteOnce
-      size: 1Gi
+      size: 2Gi
     #! @param persistence.persistentVolumeClaim.chartmuseum.existingClaim Use the existing PVC which must be created manually before bound, and specify the `subPath` if the PVC is shared with other components
     #! @param persistence.persistentVolumeClaim.chartmuseum.storageClass Specify the `storageClass` used to provision the volume. Or the default StorageClass will be used(the default). Set it to `-` to disable dynamic provisioning
     #! @param persistence.persistentVolumeClaim.chartmuseum.subPath The sub path used in the volume

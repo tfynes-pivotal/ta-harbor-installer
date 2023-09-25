@@ -35,7 +35,7 @@ accelerator:
     label: Harbor Storage Capacity
     inputType: text
     display: true
-    defaultValue: '50G'
+    defaultValue: '50Gi'
 
 ####################################################################
 
