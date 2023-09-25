@@ -120,7 +120,7 @@ caBundleSecretName: ""
 #! the IP address of k8s node. If Harbor is deployed behind the proxy,
 #! set it as the URL of proxy
 #! 
-externalURL: #@ 'https://' + data.values.harborFqdn
+externalURL: #@ 'https://' + data.values.projectName
 #! SecurityContext configuration
 #! ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 #! @param containerSecurityContext.runAsUser Set container's Security Context runAsUser
