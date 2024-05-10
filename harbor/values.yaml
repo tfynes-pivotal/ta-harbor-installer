@@ -1697,7 +1697,7 @@ chartMuseumImage:
 chartmuseum:
   #! @param chartmuseum.enabled Enable ChartMuseum
   #! 
-  enabled: true
+  enabled: false
   #! @param chartmuseum.command Override default container command (useful when using custom images)
   #! 
   command: []
@@ -2300,7 +2300,7 @@ notarySignerImage:
 notary:
   #! @param notary.enabled Enable Notary
   #! 
-  enabled: true
+  enabled: false
   server:
     #! @param notary.server.command Override default container command (useful when using custom images)
     #! 
